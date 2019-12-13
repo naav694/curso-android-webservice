@@ -1,5 +1,5 @@
 <?php 
-include('../classes/mysql_connect.php');
+include('mysql_connect.php');
 
 Class ServiceClass {
 
@@ -13,7 +13,16 @@ Class ServiceClass {
 		unset($this->connect);
 	}
 
-	
+	function iniciarSesion($usuario, $contrasena) {
+		$mySQL = "SELECT COUNT(*) CONTEO FROM USUARIO 
+        WHERE USUARIO = '".$usuario."' AND CONTRASENA = '".$contrasena."'";
+		$result = $this->connect->query($mySQL);
+		return $result;
+	}
 
+	function insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar) {
+		$mySQL = "INSERT INTO USUARIO (USUARIO, CONTRASENA, NOMBRE_USUARIO, CORREO, DIRECCION, PUESTO, TELEFONO, BANDERA_RECORDAR) VALUES ('".$usuario."','".$contrasena."','".$nombre."','".$correo."','".$direccion."','".$puesto."','".$telefono."', ".$recordar.")";
+		$result = $this->connect->insert($mySQL);
+	}
 }
 ?>
