@@ -9,12 +9,12 @@
 	$serviceClass = new ServiceClass();
 
 	switch ($action) {
-		case '1': 
+		case '1': //iniciar sesion
 			$result = $serviceClass->iniciarSesion($_GET['usuario'], $_GET['contrasena']);
 			$jresponse["response"][0] = array('result' => $result[0]['CONTEO']);
 			echo json_encode($jresponse);
 			break;
-		case '2':
+		case '2': //insertar usuario
 			$jUsuario = json_decode(file_get_contents('php://input'), true);
 			$usuario = $jUsuario['usuario'];
 			$contrasena = $jUsuario['contrasena'];
@@ -24,10 +24,10 @@
 			$puesto = $jUsuario['puesto'];
 			$telefono = $jUsuario['telefono'];
 			$recordar = $jUsuario['recordar'];
-			$result = $serviceClass->insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar);
-			echo json_encode($result);
+			echo $serviceClass->insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar);
 			break;
-		case '3': 
+		case '3': //obtener actividades
+		
 			break;
 		default:
 			echo 'No existe valor para el parametro';

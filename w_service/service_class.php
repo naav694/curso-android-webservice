@@ -25,5 +25,13 @@ Class ServiceClass {
 		$result = $this->connect->insert($mySQL);
 		return $result;
 	}
+
+	function obtenerActividades($pkUsuario) {
+		$mySQL = "";
+		$result = $this->connect->query($mySQL);
+		return $result;
+	}
+
+	function insertarActividad()
 }
 ?>
