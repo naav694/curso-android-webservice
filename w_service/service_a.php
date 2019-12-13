@@ -10,9 +10,22 @@
 
 	switch ($action) {
 		case '1': 
-			
+			$result = $serviceClass->iniciarSesion($_GET['usuario'], $_GET['contrasena']);
+			$jresponse["response"][0] = array('result' => $result[0]['CONTEO']);
+			echo json_encode($jresponse);
 			break;
-		case '2':   
+		case '2':
+			$jUsuario = json_decode(file_get_contents('php://input'), true);
+			$usuario = $jUsuario['usuario'];
+			$contrasena = $jUsuario['contrasena'];
+			$nombre = $jUsuario['nombre'];
+			$correo = $jUsuario['correo'];
+			$direccion = $jUsuario['direccion'];
+			$puesto = $jUsuario['puesto'];
+			$telefono = $jUsuario['telefono'];
+			$recordar = $jUsuario['recordar'];
+			$result = $serviceClass->insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar);
+			echo json_encode($result);
 			break;
 		case '3': 
 			break;

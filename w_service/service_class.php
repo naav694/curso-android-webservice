@@ -23,6 +23,7 @@ Class ServiceClass {
 	function insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar) {
 		$mySQL = "INSERT INTO USUARIO (USUARIO, CONTRASENA, NOMBRE_USUARIO, CORREO, DIRECCION, PUESTO, TELEFONO, BANDERA_RECORDAR) VALUES ('".$usuario."','".$contrasena."','".$nombre."','".$correo."','".$direccion."','".$puesto."','".$telefono."', ".$recordar.")";
 		$result = $this->connect->insert($mySQL);
+		return $result;
 	}
 }
 ?>
