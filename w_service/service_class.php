@@ -32,6 +32,10 @@ Class ServiceClass {
 		return $result;
 	}
 
-	function insertarActividad()
+	function insertarActividad($fkUsuario, $nombreCliente, $nombreActividad, ) {
+		$mySQL = "INSERT INTO ACTIVIDAD () VALUES ()";
+		$result = $this->connect->insert($mySQL);
+		return $result;
+	}
 }
 ?>
