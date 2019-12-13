@@ -27,7 +27,7 @@ Class ServiceClass {
 	}
 
 	function obtenerActividades($pkUsuario) {
-		$mySQL = "";
+		$mySQL = "SELECT * FROM ACTIVIDAD WHERE PK_USUARIO = ".$pkUsuario;
 		$result = $this->connect->query($mySQL);
 		return $result;
 	}

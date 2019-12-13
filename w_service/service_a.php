@@ -27,7 +27,9 @@
 			echo $serviceClass->insertarUsuario($usuario, $contrasena, $nombre, $correo, $direccion, $puesto, $telefono, $recordar);
 			break;
 		case '3': //obtener actividades
-		
+			$pkUsuario = $_GET['pkusuario'];
+			$result = $serviceClass->obtenerActividades($pkUsuario);
+			echo json_encode($result);
 			break;
 		default:
 			echo 'No existe valor para el parametro';
