@@ -14,7 +14,7 @@ Class ServiceClass {
 	}
 
 	function iniciarSesion($usuario, $contrasena) {
-		$mySQL = "SELECT COUNT(*) CONTEO FROM USUARIO 
+		$mySQL = "SELECT PK_USUARIO FROM USUARIO 
         WHERE USUARIO = '".$usuario."' AND CONTRASENA = '".$contrasena."'";
 		$result = $this->connect->query($mySQL);
 		return $result;
@@ -27,13 +27,13 @@ Class ServiceClass {
 	}
 
 	function obtenerActividades($pkUsuario) {
-		$mySQL = "SELECT * FROM ACTIVIDAD WHERE PK_USUARIO = ".$pkUsuario;
+		$mySQL = "SELECT * FROM ACTIVIDAD WHERE FK_USUARIO = ".$pkUsuario;
 		$result = $this->connect->query($mySQL);
 		return $result;
 	}
 
-	function insertarActividad($fkUsuario, $nombreCliente, $nombreActividad, ) {
-		$mySQL = "INSERT INTO ACTIVIDAD () VALUES ()";
+	function insertarActividad($nombreCliente, $tituloActividad, $comentario, $latitud, $longitud, $nombreFoto, $pkUsuario) {
+		$mySQL = "INSERT INTO ACTIVIDAD (FK_USUARIO, NOMBRE_CLIENTE, NOMBRE_ACTIVIDAD, COMENTARIO, FOTO, LATITUD, LONGITUD) VALUES (".$pkUsuario.",'".$nombreCliente."','".$tituloActividad."','".$comentario."','".$nombreFoto."',".$latitud.", ".$longitud.")";
 		$result = $this->connect->insert($mySQL);
 		return $result;
 	}
